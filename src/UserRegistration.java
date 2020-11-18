@@ -46,6 +46,22 @@ public class UserRegistration {
 		}
 	}
 	
+	//phone number validation
+	public void phoneNumberValidator() {
+		String pattern="^([\\+]?91)[6-9]{1}[0-9]{9}$";
+			
+		System.out.println("Enter the c:");
+		String phoneNumber = scanner.next();
+			
+		if (phoneNumber.matches(pattern)) {
+			System.out.println("valid phone number");
+		}
+		else {
+			System.out.println("Invalid phone number");
+			phoneNumberValidator();
+		}
+	}
+		
 	public static void main(String[] args) {
 		System.out.println("Welcome to user registration");
 		
@@ -53,5 +69,7 @@ public class UserRegistration {
 		user.nameValidate();
 		
 		user.emailValidator();
+		
+		user.phoneNumberValidator();
 		}
 }
