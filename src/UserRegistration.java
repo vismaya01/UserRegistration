@@ -2,92 +2,140 @@ import java.util.Scanner;
 
 public class UserRegistration {
 	Scanner scanner = new Scanner(System.in);
+	String firstName;
+	String lastName;
+	String email;
+	String phoneNumber;
+	String password;
 	
 	//name validation
-	public void nameValidate() {
+	public boolean FirstNameValidate(String firstName) {
 		String pattern = "^[A-Z][a-zA-Z]{2,}$";
-		
-		System.out.println("Enter the first name:");
-		String firstName = scanner.next();
 		
 		if (firstName.matches(pattern)) {
 			System.out.println("valid First name");
+			return true;
 		}
 		else {
 			System.out.println("Invalid First name");
-			nameValidate();
+			return false;
+			
 		}
-		
-		System.out.println("Enter the last name:");
-		String lastName = scanner.next();
+	}	
+	
+	public boolean LastNameValidate(String lastName) {
+		String pattern = "^[A-Z][a-zA-Z]{2,}$";
 		
 		if (lastName.matches(pattern)) {
 			System.out.println("valid last name");
+			return true;
 		}
 		else {
 			System.out.println("Invalid last name");
-			nameValidate();
+			return false;
 		}
 	}
 	
 	//email validation
-	public void emailValidator() {
+	public boolean emailValidator(String email) {
 		String pattern = "^[0-9a-zA-Z]+([.\\-+]?[a-zA-Z0-9]+)?\\@[0-9a-zA-Z]+.[a-zA-Z]{2,4}(.[a-zA-Z]{2,})*$";
-		
-		System.out.println("Enter the email id :");
-		String email = scanner.next();
 		
 		if (email.matches(pattern)) {
 			System.out.println("valid email id");
+			return true;
 		}
 		else {
 			System.out.println("Invalid email id");
-			emailValidator();
+			return false;
 		}
 	}
 	
 	//phone number validation
-	public void phoneNumberValidator() {
+	public boolean phoneNumberValidator(String phoneNumber) {
 		String pattern="^([\\+]?91)[6-9]{1}[0-9]{9}$";
-			
-		System.out.println("Enter the phone number:");
-		String phoneNumber = scanner.next();
 			
 		if (phoneNumber.matches(pattern)) {
 			System.out.println("valid phone number");
+			return true;
 		}
 		else {
 			System.out.println("Invalid phone number");
-			phoneNumberValidator();
+			return false;
 		}
 	}
 	
 	//password validation
-	public void passwordValidator() {
+	public boolean passwordValidator(String password) {
 		String pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?!(?:.*[!@#$%^&*]){2})[a-zA-Z0-9!@#$%^&*]{8,}$";
 		
-		System.out.println("Enter the password:");
-		String password = scanner.next();
-			
 		if (password.matches(pattern)) {
 			System.out.println("valid password");
+			return true;
 		}
 		else {
 			System.out.println("Invalid password");
-			passwordValidator();
+			return false;
 		}
 	}
+	
+	public void userFirstName(){
+		System.out.println("Enter the First name :");
+		firstName = scanner.next();
+		boolean result =  FirstNameValidate(firstName);
+		if ( result == false) {
+			userFirstName();
+		}
+	}
+	
+	public void userLastName(){	
+		System.out.println("Enter the Last name :");
+		lastName = scanner.next();
+		boolean result = LastNameValidate(lastName);
+		if ( result == false) {
+			userLastName();
+		}
+	}
+	
+	public void userEmail(){	
+		System.out.println("Enter the email id :");
+		email = scanner.next();
+		boolean result = emailValidator(email);
+		if ( result == false) {
+			userEmail();
+		}
+	}	
+	
+	public void userPhoneNumber(){
+		System.out.println("Enter the phone number:");
+		phoneNumber = scanner.next();
+		boolean result = phoneNumberValidator(phoneNumber);
+		if ( result == false) {
+			userPhoneNumber();
+		}
+	}
+	
+	public void userPassword(){
+		System.out.println("Enter the password:");
+		password = scanner.next();
+		boolean result = passwordValidator(password);
+		if ( result == false) {
+			userPassword();
+		}
+	
+	} 
 		
 	public static void main(String[] args) {
 		System.out.println("Welcome to user registration");
 		
 		UserRegistration user = new UserRegistration();
-		user.nameValidate();
+		user.userFirstName();
 		
-		user.emailValidator();
+		user.userLastName();
 		
-		user.phoneNumberValidator();
+		user.userEmail();
 		
-		user.passwordValidator();
+		user.userPhoneNumber();
+		
+		user.userPassword();
 		}
 }
