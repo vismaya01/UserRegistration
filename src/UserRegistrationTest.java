@@ -34,15 +34,15 @@ public class UserRegistrationTest {
 	@Test
 	public void givenEmailAddress_WhenValid_ShouldReturnTrue() {
 		UserRegistration userValidator = new UserRegistration();
-		String result = userValidator.emailValidator("kvvismaya98@gmail.com");
-		Assert.assertEquals("true",result);			
+		boolean result = userValidator.emailValidator("kvvismaya98@gmail.com");
+		Assert.assertTrue(result);			
 	}
 	
 	@Test
 	public void givenEmailAddress_WhenInvalid_ShouldReturnTrue() {
 		UserRegistration userValidator = new UserRegistration();
-		String result = userValidator.emailValidator("abc()*@gmail.com");
-		Assert.assertEquals("flase",result);			}
+		boolean result = userValidator.emailValidator("abc()*@gmail.com");
+		Assert.assertFalse(result);			}
 	
 	@Test
 	public void givenPhoneNumber_WhenValid_ShouldReturnTrue() {
