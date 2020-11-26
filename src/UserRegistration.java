@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class UserRegistration  {
 	Scanner scanner = new Scanner(System.in);
@@ -10,10 +11,8 @@ public class UserRegistration  {
 	
 	//name validation
 	public boolean FirstNameValidate(String firstName) throws UserRegistrationException {
-		String pattern = "^[A-Z][a-z]{2,}$";
-		
-		if (firstName.matches(pattern)) {
-			System.out.println("valid First name");
+		Predicate<String> validCheck = n -> n.matches("^[A-Z][a-z]{2,}$");
+		if(validCheck.test(firstName)) {
 			return true;
 		}
 		else {
@@ -22,10 +21,8 @@ public class UserRegistration  {
 	}	
 	
 	public boolean LastNameValidate(String lastName) throws UserRegistrationException {
-		String pattern = "^[A-Z][a-z]{2,}$";
-		
-		if (lastName.matches(pattern)) {
-			System.out.println("valid last name");
+		Predicate<String> validCheck = n -> n.matches("^[A-Z][a-z]{2,}$");
+		if(validCheck.test(lastName)) {
 			return true;
 		}
 		else {
@@ -35,10 +32,8 @@ public class UserRegistration  {
 	
 	//email validation
 	public boolean emailValidator(String email) throws UserRegistrationException {
-		String pattern = "^[a-zA-Z]{1,}([.\\-+]?[a-zA-Z0-9]+)?\\@[a-z0-9]{1,}\\.([a-z]{2,4})(\\.[a-z]{2,4})?$";
-		
-		if (email.matches(pattern)) {
-			System.out.println("valid email id");
+		Predicate<String> validCheck = n -> n.matches("^[a-zA-Z]{1,}([.\\-+]?[a-zA-Z0-9]+)?\\@[a-z0-9]{1,}\\.([a-z]{2,4})(\\.[a-z]{2,4})?$");
+		if(validCheck.test(email)) {
 			return true;
 		}
 		else {
@@ -48,10 +43,8 @@ public class UserRegistration  {
 	
 	//phone number validation
 	public boolean phoneNumberValidator(String phoneNumber) throws UserRegistrationException  {
-		String pattern="^([\\+]?91)[6-9]{1}[0-9]{9}$";
-			
-		if (phoneNumber.matches(pattern)) {
-			System.out.println("valid phone number");
+		Predicate<String> validCheck = n -> n.matches("^([\\+]?91)[6-9]{1}[0-9]{9}$");
+		if(validCheck.test(phoneNumber)) {
 			return true;
 		}
 		else {
@@ -61,10 +54,8 @@ public class UserRegistration  {
 	
 	//password validation
 	public boolean passwordValidator(String password) throws UserRegistrationException  {
-		String pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?!(?:.*[!@#$%^&*]){2})[a-zA-Z0-9!@#$%^&*]{8,}$";
-		
-		if (password.matches(pattern)) {
-			System.out.println("valid password");
+		Predicate<String> validCheck = n -> n.matches("^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?!(?:.*[!@#$%^&*]){2})[a-zA-Z0-9!@#$%^&*]{8,}$");
+		if(validCheck.test(password)) {
 			return true;
 		}
 		else {
@@ -82,7 +73,7 @@ public class UserRegistration  {
 					break;
 				}
 			} catch (UserRegistrationException e) {
-				e.printStackTrace();
+				System.out.println(e);
 			}
 		}
 		while(true) {
@@ -94,7 +85,7 @@ public class UserRegistration  {
 					break;
 				}
 			} catch (UserRegistrationException e) {
-				e.printStackTrace();
+				System.out.println(e);
 			}
 		}
 		while(true) {
@@ -106,7 +97,7 @@ public class UserRegistration  {
 					break;
 				}
 			} catch (UserRegistrationException e) {
-				e.printStackTrace();
+				System.out.println(e);
 			}
 		}
 		while(true) {
@@ -118,7 +109,7 @@ public class UserRegistration  {
 					break;
 				}
 			} catch (UserRegistrationException e) {
-				e.printStackTrace();
+				System.out.println(e);
 			}
 		}
 		while(true) {
@@ -130,7 +121,7 @@ public class UserRegistration  {
 					break;
 				}
 			} catch (UserRegistrationException e) {
-				e.printStackTrace();
+				System.out.println(e);
 			}
 		}
 	}
